@@ -7,6 +7,6 @@ dotenv.config();
 
 /***********Version Control vr1 ******************** */
 
-aiRouter.get("/"+process.env.PATH_KEY,OpenAiChat);
+aiRouter.post("/"+process.env.PATH_KEY,myAuth,OpenAiChat);
 
 module.exports=aiRouter;

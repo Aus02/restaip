@@ -18,34 +18,35 @@ async function continueConversation(prompt, messages) {
     const response =await openai.createChatCompletion({
       model:"gpt-3.5-turbo",
       messages: messages,
-      max_tokens:50
+      max_tokens:100
     });
 
     console.log("Current Ai answer is ", response.data.choices[0].message.content);
     //console.log("Current used token ", response.usage.total_tokens);
     
+    
     return response.data.choices[0].message.content;
 
-    
   } catch (error) {
     console.error('Error:', error);
     throw error;
   }
 }
-const conversation = [{ role: 'system', content: 'You are a helpful assistant.' },
-        {"role": "user", "content": "Who won the world series in 2020?"},
-        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."}];
+
 const OpenAiChat = async (req,res) =>{
 
-  const initialMessage = { role: 'system', content: 'You are a helpful assistant.' };
-  
+  var conversation=req.body;
+  // for (const jsonObject of jsonArray) {
+  //   const { type, content, isActive } = jsonObject;
 
+  // }
   // Add user and assistant messages to the conversation
-  conversation.push({ role: 'user', content: req.body.question  });
+  //conversation.push({ role: 'user', content: req.body.question  });
+
 
 	const response = await continueConversation(req.body.question , conversation);
 
-  conversation.push({role:'assistant',content:response});
+ // conversation.push({role:'assistant',content:response});
 
   console.log("current conversation list is "+JSON.stringify(conversation));
 
