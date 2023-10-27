@@ -43,18 +43,18 @@ const signup = async (req,res)=> {
     }
 }
 
-const deleteAccount = async(req,res)=>{
-    userModel.findByIdAndRemove(req.params.id)
-    .then(user =>{
-        if(user){
-            return res.status(200).json({success:true,message:"User deleted successfully"})
-        }else{
-            return res.status(404).json({
-                success:false, message : "User not found"
-            })
-        }
-    });
-}
+// const deleteAccount = async(req,res)=>{
+//     userModel.findByIdAndRemove(req.params.id)
+//     .then(user =>{
+//         if(user){
+//             return res.status(200).json({success:true,message:"User deleted successfully"})
+//         }else{
+//             return res.status(404).json({
+//                 success:false, message : "User not found"
+//             })
+//         }
+//     });
+// }
 
 const signin = async(req,res) => {
     const {userId,password,deviceToken}=req.body;
