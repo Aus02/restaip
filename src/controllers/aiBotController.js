@@ -44,7 +44,7 @@ const OpenAiChat = async (req,res) =>{
 
   console.log("current conversation list is "+JSON.stringify(conversation)+ " and token size is "+tokenSize);
 
-  return res.status(200).json({success:true,answer : response});
+  return res.status(200).json({success:true,message : response});
 
 
 }
