@@ -26,7 +26,8 @@ async function continueConversations(userMessage, tokenSize) {
     const response = await openai.post('/chat/completions', {
     model: 'gpt-3.5-turbo',
     messages: userMessage,
-      max_tokens: tokenSize
+      max_tokens: tokenSize,
+      temperature:1.2
     });
      
     console.log('after success response :', response);
