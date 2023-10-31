@@ -32,7 +32,7 @@ async function continueConversations(userMessage, tokenSize) {
     console.log('after success response :', response);
     console.log('after success message response :', response.data.choices[0].message.content);
     console.log('after success total token used :', response.data.usage.total_tokens);
-    return {message:response.data.choices[0].message.content,token_used:response.data.usage.total_tokens};
+    return response.data.choices[0].message.content;
 
   } catch (error) {
     console.error('Error in conversation:', error);
@@ -48,7 +48,7 @@ const OpenAiChat = async (req, res) => {
 
   const responses = await continueConversations(userMessage, tokenSize);
 
-  return res.status(200).json({ success: true, data: responses });
+  return res.status(200).json({ success: true, messages: responses });
 }
 
 
