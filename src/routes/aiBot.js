@@ -10,4 +10,6 @@ dotenv.config();
 
 aiRouter.post("/"+process.env.PATH_KEY,myAuth,OpenAiChat);
 
+aiRouter.post("/prompts",myAuth,OpenAiChat);
+
 module.exports=aiRouter;
